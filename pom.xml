@@ -121,7 +121,7 @@
                              (which you can install into your $MAVEN_HOME/lib
                              in order to use aws-maven via 'mvn deploy:deploy-file')
                         -->
-                        <!--
+                        
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -133,11 +133,19 @@
 						</goals>
 						<configuration>
 							<outputFile>target/aws-maven-wagon.jar</outputFile>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>org/slf4j/**</exclude>
+									</excludes>
+								</filter>
+							</filters>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			-->
+			
 		</plugins>
 	</build>
 
